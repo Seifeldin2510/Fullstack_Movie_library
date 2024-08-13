@@ -1,0 +1,34 @@
+<div class="container">
+    <h1>Movies</h1>
+    <div class="row mt-3">
+        <div class="col-6">
+            <button class="btn btn-primary" (click)="prevPage()"> &lt; Prev </button>
+        </div>
+
+        <div class="col-6">
+            <button class="btn btn-primary" (click)="nextPage()"> Next &gt; </button>
+        </div>
+
+    </div>
+    <div class="row">
+        @for(serie of allTV ; track serie){
+        <div class ="col-6 my-4">
+            <div class="card w-75">
+                <a [routerLink]="['/tvDetails', serie.id]">
+                <img [src]= "'https://image.tmdb.org/t/p/original' + serie.poster_path "class="card-img-top" alt="...">
+                </a>
+                <div class="card-body">
+                  <h5 class="card-title">{{serie.title}}</h5>
+                  <p class="card-text">{{serie.vote_average}}</p>
+                </div>
+              </div>
+        </div>
+    }@empty
+    {
+        <div class="mx-auto">
+        <div class="spinner-border mx-auto mt-5 text-center" role="status">
+          </div>
+          </div>
+    }
+    </div>
+</div>
